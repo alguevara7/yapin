@@ -1,6 +1,6 @@
-# black
+# yapin
 
-playing with creating a Safari extension in ClojureScript
+yet another safari extension for pinboard.in
 
 ## License
 
