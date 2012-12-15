@@ -29,4 +29,4 @@
     ;(open-browser-window (str js/safari.extension.baseURI "black.html"))
     ))
 
-(js/safari.application.addEventListener "command"  handle-toolbar-item-clicked false)
+;(js/safari.application.addEventListener "command"  handle-toolbar-item-clicked false)

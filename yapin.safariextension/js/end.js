@@ -1,8 +1,8 @@
 function handleMessage(event) {
-  alert("IN PAGE CONTENT" + event);
-  alert("SENDING MESSAGE BACK TO GLOBAL");
-  //do it  
+  //TODO call back to global page
+  if (event.name === "slide-page-in") {
+  	alert(event.message);
+  }
 }
 
 safari.self.addEventListener("message",  handleMessage, false);
- 

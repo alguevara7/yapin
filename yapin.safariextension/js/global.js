@@ -20192,9 +20192,9 @@ yapin.global.find_bookmarks = function find_bookmarks(criteria) {
   return cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'title", "\ufdd0'url", "\ufdd0'description", "\ufdd0'tags"], {"\ufdd0'title":"DailyCred", "\ufdd0'url":"https://www.dailycred.com/", "\ufdd0'description":"Social Authentication Done Right", "\ufdd0'tags":cljs.core.PersistentVector.fromArray(["api", "service"], true)})], true)
 };
 yapin.global.open_browser_window = function open_browser_window(url) {
-  var window__21035 = safari.application.openBrowserWindow();
-  var tab__21036 = window__21035.activeTab;
-  return tab__21036.url = url
+  var window__6103 = safari.application.openBrowserWindow();
+  var tab__6104 = window__6103.activeTab;
+  return tab__6104.url = url
 };
 yapin.global.handle_toolbar_item_clicked = function handle_toolbar_item_clicked(event) {
   if(cljs.core._EQ_.call(null, "black", event.command)) {
@@ -20207,4 +20207,3 @@ yapin.global.handle_toolbar_item_clicked = function handle_toolbar_item_clicked(
   }
 };
 goog.exportSymbol("yapin.global.handle_toolbar_item_clicked", yapin.global.handle_toolbar_item_clicked);
-safari.application.addEventListener("command", yapin.global.handle_toolbar_item_clicked, false);
