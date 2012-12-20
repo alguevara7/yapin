@@ -1,5 +1,5 @@
 (ns yapin.bar
-  (:use ;[cljs.core :only [clj->js]]
+  (:use [yapin.util :only [clj->js active-browser-window global-ns find-element find-extension-bar dispatch-page-message]]
         [clojure.browser.event :only [listen]]))
 
 ;(def form-field-search (atom {}))
@@ -25,3 +25,5 @@
       (listen form-field-search :keypress form-field-search-handle-key-press))))
 
 (register-event-handlers)
+
+; - hide extension bar
