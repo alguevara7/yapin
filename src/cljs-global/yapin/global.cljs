@@ -10,7 +10,7 @@
 ;				barWindow.fullscreen();
 ;		}
 
-(defn find-bookmarks [criteria] 
+(defn ^:export find-bookmarks [criteria] 
   [{:title "DailyCred" :url "https://www.dailycred.com/" :description "Social Authentication Done Right" :tags ["api", "service"]}])
 
 (defn- open-browser-window [url]

@@ -1,3 +1,4 @@
+var CLOSURE_NO_DEPS = true;
 var COMPILED = false;
 var goog = goog || {};
 goog.global = this;
@@ -497,6 +498,15 @@ goog.base = function(me, opt_methodName, var_args) {
 goog.scope = function(fn) {
   fn.call(goog.global)
 };
+goog.provide("goog.debug.Error");
+goog.debug.Error = function(opt_msg) {
+  this.stack = (new Error).stack || "";
+  if(opt_msg) {
+    this.message = String(opt_msg)
+  }
+};
+goog.inherits(goog.debug.Error, Error);
+goog.debug.Error.prototype.name = "CustomError";
 goog.provide("goog.string");
 goog.provide("goog.string.Unicode");
 goog.string.Unicode = {NBSP:"\u00a0"};
@@ -924,15 +934,6 @@ goog.string.toSelectorCaseCache_ = {};
 goog.string.toSelectorCase = function(str) {
   return goog.string.toSelectorCaseCache_[str] || (goog.string.toSelectorCaseCache_[str] = String(str).replace(/([A-Z])/g, "-$1").toLowerCase())
 };
-goog.provide("goog.debug.Error");
-goog.debug.Error = function(opt_msg) {
-  this.stack = (new Error).stack || "";
-  if(opt_msg) {
-    this.message = String(opt_msg)
-  }
-};
-goog.inherits(goog.debug.Error, Error);
-goog.debug.Error.prototype.name = "CustomError";
 goog.provide("goog.asserts");
 goog.provide("goog.asserts.AssertionError");
 goog.require("goog.debug.Error");
@@ -21288,62 +21289,81 @@ clojure.browser.event.remove_all = function remove_all(opt_obj, opt_type, opt_ca
 };
 goog.provide("yapin.bar");
 goog.require("cljs.core");
-goog.require("cljs.core");
 goog.require("clojure.browser.event");
 goog.require("clojure.browser.event");
-goog.require("cljs.core");
+yapin.bar.clj__GT_js = function clj__GT_js(x) {
+  if(cljs.core.string_QMARK_.call(null, x)) {
+    return x
+  }else {
+    if(cljs.core.keyword_QMARK_.call(null, x)) {
+      return cljs.core.name.call(null, x)
+    }else {
+      if(cljs.core.map_QMARK_.call(null, x)) {
+        var obj = {};
+        var G__6262_6264 = cljs.core.seq.call(null, x);
+        while(true) {
+          if(G__6262_6264) {
+            var vec__6263_6265 = cljs.core.first.call(null, G__6262_6264);
+            var k_6266 = cljs.core.nth.call(null, vec__6263_6265, 0, null);
+            var v_6267 = cljs.core.nth.call(null, vec__6263_6265, 1, null);
+            obj[clj__GT_js.call(null, k_6266)] = clj__GT_js.call(null, v_6267);
+            var G__6268 = cljs.core.next.call(null, G__6262_6264);
+            G__6262_6264 = G__6268;
+            continue
+          }else {
+          }
+          break
+        }
+        return obj
+      }else {
+        if(cljs.core.coll_QMARK_.call(null, x)) {
+          return cljs.core.apply.call(null, cljs.core.array, cljs.core.map.call(null, clj__GT_js, x))
+        }else {
+          if("\ufdd0'else") {
+            return x
+          }else {
+            return null
+          }
+        }
+      }
+    }
+  }
+};
 yapin.bar.active_browser_window = function active_browser_window() {
   return safari.application.activeBrowserWindow
 };
+yapin.bar.global_ns = safari.extension.globalPage.contentWindow.yapin.global;
 yapin.bar.find_element = function find_element(window, id) {
-  var document__309265 = window.document;
-  return document__309265.getElementById(id)
+  var document = window.document;
+  return document.getElementById(id)
 };
-yapin.bar.find_extension_bars = function find_extension_bars(identifier, browser_window) {
-  return cljs.core.filter.call(null, function(p1__309263_SHARP_) {
-    var and__3822__auto____309268 = cljs.core._EQ_.call(null, identifier, p1__309263_SHARP_.identifier);
-    if(and__3822__auto____309268) {
-      var or__3824__auto____309269 = browser_window == null;
-      if(or__3824__auto____309269) {
-        return or__3824__auto____309269
-      }else {
-        return cljs.core._EQ_.call(null, browser_window, p1__309263_SHARP_.browserWindow)
-      }
-    }else {
-      return and__3822__auto____309268
-    }
-  }, safari.extension.bars)
+yapin.bar.find_extension_bar = function find_extension_bar(identifier) {
+  return cljs.core.first.call(null, cljs.core.filter.call(null, function(p1__6269_SHARP_) {
+    return cljs.core._EQ_.call(null, identifier, p1__6269_SHARP_.identifier)
+  }, safari.extension.bars))
 };
 yapin.bar.dispatch_page_message = function dispatch_page_message(name, message) {
-  var page__309271 = safari.application.activeBrowserWindow.activeTab.page;
-  return page__309271.dispatchMessage(name, message)
+  var page = safari.application.activeBrowserWindow.activeTab.page;
+  return page.dispatchMessage(name, message)
 };
-yapin.bar.form_field_search_handle_key_down = function form_field_search_handle_key_down(event) {
-  return yapin.bar.dispatch_page_message.call(null, "slide-page-in", cljs.core.PersistentVector.fromArray(["1", "2"], true))
+yapin.bar.find_bookmarks = function find_bookmarks(text) {
+  return yapin.bar.global_ns.find_bookmarks(text)
 };
-yapin.bar.do_it = function do_it() {
-  var G__309279__309280 = cljs.core.seq.call(null, yapin.bar.find_extension_bars.call(null, "bar", null));
-  if(G__309279__309280) {
-    var bar__309281 = cljs.core.first.call(null, G__309279__309280);
-    var G__309279__309282 = G__309279__309280;
-    while(true) {
-      var button__309283 = yapin.bar.find_element.call(null, bar__309281.contentWindow, "test");
-      clojure.browser.event.listen.call(null, button__309283, "\ufdd0'click", yapin.bar.form_field_search_handle_key_down);
-      var temp__3974__auto____309284 = cljs.core.next.call(null, G__309279__309282);
-      if(temp__3974__auto____309284) {
-        var G__309279__309285 = temp__3974__auto____309284;
-        var G__309286 = cljs.core.first.call(null, G__309279__309285);
-        var G__309287 = G__309279__309285;
-        bar__309281 = G__309286;
-        G__309279__309282 = G__309287;
-        continue
-      }else {
-        return null
-      }
-      break
-    }
+yapin.bar.form_field_search_handle_key_press = function form_field_search_handle_key_press(event) {
+  var key_code = event.keyCode;
+  if(cljs.core._EQ_.call(null, key_code, 13)) {
+    var this$ = this;
+    var value = this$.value;
+    var result = yapin.bar.find_bookmarks.call(null, value);
+    return yapin.bar.dispatch_page_message.call(null, "slide-page-in", yapin.bar.clj__GT_js.call(null, result))
   }else {
     return null
   }
 };
-yapin.bar.do_it.call(null);
+yapin.bar.register_event_handlers = function register_event_handlers() {
+  var bar = yapin.bar.find_extension_bar.call(null, "bar");
+  var content_window = bar.contentWindow;
+  var form_field_search = yapin.bar.find_element.call(null, content_window, "form-field-search");
+  return clojure.browser.event.listen.call(null, form_field_search, "\ufdd0'keypress", yapin.bar.form_field_search_handle_key_press)
+};
+yapin.bar.register_event_handlers.call(null);

@@ -20191,10 +20191,11 @@ goog.require("cljs.core");
 yapin.global.find_bookmarks = function find_bookmarks(criteria) {
   return cljs.core.PersistentVector.fromArray([cljs.core.ObjMap.fromObject(["\ufdd0'title", "\ufdd0'url", "\ufdd0'description", "\ufdd0'tags"], {"\ufdd0'title":"DailyCred", "\ufdd0'url":"https://www.dailycred.com/", "\ufdd0'description":"Social Authentication Done Right", "\ufdd0'tags":cljs.core.PersistentVector.fromArray(["api", "service"], true)})], true)
 };
+goog.exportSymbol("yapin.global.find_bookmarks", yapin.global.find_bookmarks);
 yapin.global.open_browser_window = function open_browser_window(url) {
-  var window__6103 = safari.application.openBrowserWindow();
-  var tab__6104 = window__6103.activeTab;
-  return tab__6104.url = url
+  var window__576790 = safari.application.openBrowserWindow();
+  var tab__576791 = window__576790.activeTab;
+  return tab__576791.url = url
 };
 yapin.global.handle_toolbar_item_clicked = function handle_toolbar_item_clicked(event) {
   if(cljs.core._EQ_.call(null, "black", event.command)) {
